@@ -20,7 +20,7 @@ void MapGame::LoadMap(wstring mappath)
 		for (int j = 0; j < game_map.MAP_X; j++)
 		{
 			f >> data;
-			game_map.ArrayTile[i][j] = data;
+			game_map.ArrayTile.push_back(data);
 			DebugOut(L"[ERROR] data %d not found!\n", data);
 		}
 	}
@@ -45,24 +45,28 @@ void MapGame::DrawTiles(int val, float x, float y)
 void MapGame::Render()
 {
 	float x0, y0;
-	for (int i = 0; i < MAX_MAP_Y; i++)
+	int temp = 0;
+	for (int i = 0; i < game_map.MAP_Y; i++)
 	{
-		for (int j = 0; j < MAX_MAP_X; j++)
+		for (int j = 0; j < game_map.MAP_X; j++)
 		{
-
-
-			x0 = j * 16;
-			y0 = i * 16;
-			int val = game_map.ArrayTile[i][j];
-			DrawTiles(val, x0, y0);
+			if (temp < game_map.MAP_Y * game_map.MAP_X)
+			{
+				x0 = j * 16;
+				y0 = i * 16;
+				int val = game_map.ArrayTile[temp];
+				DrawTiles(val, x0, y0);
+				temp++;
+			}
+		
 		}
 	}
 
 }
 float MapGame::getMapWidth() {
-	return MAX_MAP_X * TILE_WIDTH;
+	return game_map.MAP_X * TILE_WIDTH;
 }
 
 float MapGame::getMapHeight() {
-	return MAX_MAP_Y * TILE_HEIGHT;
+	return game_map.MAP_Y * TILE_HEIGHT;
 }

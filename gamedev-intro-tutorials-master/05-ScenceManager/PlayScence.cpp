@@ -271,7 +271,7 @@ void CPlayScene::Update(DWORD dt)
 
 	CGame* game = CGame::GetInstance();
 	cx -= game->GetScreenWidth() / 2;
-	cy -= game->GetScreenHeight() / 2 +36;
+	cy -= game->GetScreenHeight() / 2;
 	if (map != NULL)
 	{
 		if (cy < 0) cy = 0;

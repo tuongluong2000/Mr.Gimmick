@@ -6,19 +6,12 @@
 #define TILE_WIDTH 16
 #define TILE_HEIGHT 16
 
-#define TILES_ZISE_X 11
-#define TILES_ZISE_Y 40
-
-#define MAX_MAP_Y 48
-#define MAX_MAP_X 128
-
-#define MAX_LINE 2000
 
 typedef struct Map
 {
 	int MAP_X, MAP_Y;
 	int TILE_SIZE_X, TILE_SIZE_Y;
-	int ArrayTile[500][500];
+	vector <int> ArrayTile;
 };
 
 
